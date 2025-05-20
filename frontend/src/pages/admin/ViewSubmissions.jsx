@@ -30,37 +30,33 @@ const ViewSubmissions = () => {
         fetchWills();
     }, []);
 
-    const downloadWill = (will) => {
-        const willContent = `
-            Will ID: ${will._id}
-            Full Name: ${will.fullName}
-            Also Known As: ${will.alsoKnownAs || 'N/A'}
-            Omang Number: ${will.omangNumber}
-            Address: ${will.address}
-            Phone Number: ${will.phoneNumber}
-            Date of Birth: ${will.dateOfBirth}
-            Marital Status: ${will.maritalStatus}
-            Spouse Name: ${will.spouseName || 'N/A'}
-            Spouse Address: ${will.spouseAddress || 'N/A'}
-            Spouse Date of Birth: ${will.spouseDateOfBirth || 'N/A'}
-            Spouse Omang Number: ${will.spouseOmangNumber || 'N/A'}
-            Children Info: ${will.childrenInfo || 'N/A'}
-            More Children: ${will.moreChildren || 'N/A'}
-            Real Estate Info: ${will.realEstateInfo || 'N/A'}
-            Executor Name: ${will.executorName}
-            Executor Address: ${will.executorAddress}
-            Executor Relationship: ${will.executorRelationship}
-            Title: ${will.title}
-            Content: ${will.content}
-            Status: ${will.status}
-            Created At: ${new Date(will.createdAt).toLocaleDateString()}
-        `;
-
-        const blob = new Blob([willContent], { type: 'application/msword' });
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = `Will-${will._id}.doc`;
-        link.click();
+    // Download the formatted Word file from backend
+    const downloadWill = async (willId) => {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await fetch(
+                `http://localhost:5000/api/wills/${willId}/download`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+            if (!response.ok) {
+                throw new Error('Failed to download will');
+            }
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Will-${willId}.docx`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url);
+        } catch (error) {
+            alert('Error downloading will: ' + error.message);
+        }
     };
 
     const approveWill = async (id) => {
@@ -75,7 +71,6 @@ const ViewSubmissions = () => {
             if (!response.ok) {
                 throw new Error(`Failed to approve will: ${response.status}`);
             }
-            console.log(`Will with ID ${id} approved.`);
             setWills(wills.filter((will) => will._id !== id));
         } catch (error) {
             console.error('Error approving will:', error);
@@ -94,7 +89,6 @@ const ViewSubmissions = () => {
             if (!response.ok) {
                 throw new Error(`Failed to decline will: ${response.status}`);
             }
-            console.log(`Will with ID ${id} declined.`);
             setWills(wills.filter((will) => will._id !== id));
         } catch (error) {
             console.error('Error declining will:', error);
@@ -157,9 +151,9 @@ const ViewSubmissions = () => {
                                     <td>
                                         <button
                                             className="download-button"
-                                            onClick={() => downloadWill(will)}
+                                            onClick={() => downloadWill(will._id)}
                                         >
-                                            📥 Download
+                                            ⬇️ Download Will
                                         </button>
                                         <button
                                             className="approve-button"

@@ -26,13 +26,17 @@ exports.downloadWill = async (req, res) => {
             return res.status(404).json({ message: 'Will not found' });
         }
 
+        console.log('Will data:', will);
+
         // Read logo image as buffer
         const logoPath = path.join(__dirname, '../assets/logo.png');
         let logoBuffer = null;
         try {
             logoBuffer = fs.readFileSync(logoPath);
+            console.log('Logo loaded successfully');
         } catch (e) {
             logoBuffer = null;
+            console.log('Logo NOT loaded:', e.message);
         }
 
         // Prepare children info
@@ -40,7 +44,6 @@ exports.downloadWill = async (req, res) => {
         const moreChildren = will.moreChildren || "N/A";
         const realEstateInfo = will.realEstateInfo || "N/A";
 
-        // Create the document
         const doc = new Document({
             sections: [
                 {
@@ -64,6 +67,7 @@ exports.downloadWill = async (req, res) => {
                             alignment: "center",
                             spacing: { after: 300 },
                         }),
+                        new Paragraph({ text: "" }),
                         // Personal Info Section
                         new Paragraph({
                             text: "Personal Information",
@@ -119,7 +123,7 @@ exports.downloadWill = async (req, res) => {
                             ],
                             spacing: { after: 100 },
                         }),
-                        new Paragraph({ text: "" }), // blank line for spacing
+                        new Paragraph({ text: "" }),
                         // Spouse Info Section (if married)
                         ...(will.maritalStatus === 'Married'
                             ? [
@@ -133,24 +137,28 @@ exports.downloadWill = async (req, res) => {
                                         new TextRun({ text: `Spouse Name: `, bold: true }),
                                         new TextRun(will.spouseName || "N/A"),
                                     ],
+                                    spacing: { after: 100 },
                                 }),
                                 new Paragraph({
                                     children: [
                                         new TextRun({ text: `Spouse Address: `, bold: true }),
                                         new TextRun(will.spouseAddress || "N/A"),
                                     ],
+                                    spacing: { after: 100 },
                                 }),
                                 new Paragraph({
                                     children: [
                                         new TextRun({ text: `Spouse Date of Birth: `, bold: true }),
                                         new TextRun(will.spouseDateOfBirth ? will.spouseDateOfBirth.toString().slice(0, 10) : "N/A"),
                                     ],
+                                    spacing: { after: 100 },
                                 }),
                                 new Paragraph({
                                     children: [
                                         new TextRun({ text: `Spouse Omang Number: `, bold: true }),
                                         new TextRun(will.spouseOmangNumber || "N/A"),
                                     ],
+                                    spacing: { after: 100 },
                                 }),
                                 new Paragraph({ text: "" }),
                             ]
@@ -167,6 +175,7 @@ exports.downloadWill = async (req, res) => {
                                 new TextRun({ text: `Details: `, bold: true }),
                                 new TextRun(childrenInfo),
                             ],
+                            spacing: { after: 100 },
                         }),
                         new Paragraph({
                             children: [
@@ -200,12 +209,14 @@ exports.downloadWill = async (req, res) => {
                                 new TextRun({ text: `Name: `, bold: true }),
                                 new TextRun(will.executorName || "N/A"),
                             ],
+                            spacing: { after: 100 },
                         }),
                         new Paragraph({
                             children: [
                                 new TextRun({ text: `Address: `, bold: true }),
                                 new TextRun(will.executorAddress || "N/A"),
                             ],
+                            spacing: { after: 100 },
                         }),
                         new Paragraph({
                             children: [
@@ -226,6 +237,7 @@ exports.downloadWill = async (req, res) => {
                                 new TextRun({ text: `Title: `, bold: true }),
                                 new TextRun(will.title || "N/A"),
                             ],
+                            spacing: { after: 100 },
                         }),
                         new Paragraph({
                             children: [

@@ -1,6 +1,8 @@
 const express = require('express');
 const { authenticateUser, authenticateAdmin } = require('../middleware/authMiddleware'); // Import authenticateAdmin
+const authMiddleware = authenticateUser; // Add this line
 const Will = require('../models/willModel'); // Ensure the correct path to the Will model
+const willController = require('../controllers/willController');
 const router = express.Router();
 
 // POST route to create a new will
@@ -158,5 +160,7 @@ router.post('/:id/decline', authenticateAdmin, async (req, res) => {
         res.status(500).json({ message: 'Failed to decline will' });
     }
 });
+
+router.get('/wills/:willId/download', authMiddleware, willController.downloadWill);
 
 module.exports = router;
