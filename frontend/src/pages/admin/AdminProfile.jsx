@@ -1,0 +1,43 @@
+import React, { useState, useEffect } from 'react';
+
+const AdminProfile = () => {
+    const [email, setEmail] = useState('');
+    const [fullName, setFullName] = useState('');
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchProfile = async () => {
+            try {
+                const token = localStorage.getItem('token');
+                if (!token) throw new Error('No token found');
+                const response = await fetch('http://localhost:5000/api/admin/profile', {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                if (!response.ok) throw new Error('Failed to fetch profile');
+                const data = await response.json();
+                setEmail(data.email || '');
+                setFullName(data.fullName || '');
+            } catch (error) {
+                setEmail('Error loading profile');
+                setFullName('');
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchProfile();
+    }, []);
+
+    if (loading) return <p>Loading...</p>;
+
+    return (
+        <div className="profile-container">
+            <h2>Admin Profile</h2>
+            <p><strong>Name:</strong> {fullName}</p>
+            <p><strong>Email:</strong> {email}</p>
+        </div>
+    );
+};
+
+export default AdminProfile;

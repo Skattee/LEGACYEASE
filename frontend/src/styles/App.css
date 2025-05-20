@@ -1,0 +1,202 @@
+/* General Reset */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Landing Page Styles */
+.landing-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.header p {
+    margin: 10px 0 0;
+    font-size: 1.2rem;
+}
+
+.sidebar {
+    float: left;
+    width: 25%;
+    background: #35424a;
+    color: #ffffff;
+    padding: 15px;
+}
+
+.sidebar a {
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+}
+
+.sidebar a:hover {
+    background: #e8491d;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.main-content h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.main-content p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    max-width: 600px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.table th, .table td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.table th {
+    background-color: #35424a;
+    color: white;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.buttons button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.button {
+    background-color: #35424a;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #e8491d;
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+    position: relative;
+    bottom: 0;
+}
+
+/* Register */
+.register {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.register h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.register form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.register input {
+    padding: 10px;
+    width: 300px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.register button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.register button:hover {
+    background-color: #0056b3;
+}
+
+.register .error {
+    color: red;
+    font-size: 0.9rem;
+}
+
+.register .success {
+    color: green;
+    font-size: 0.9rem;
+}

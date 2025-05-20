@@ -1,0 +1,38 @@
+.landing-hero-section {
+  min-height: 60vh;
+  background: linear-gradient(120deg, #007bff 70%, #e3e9f7 100%);
+  position: relative;
+  overflow: hidden;
+}
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.18);
+  z-index: 1;
+}
+.landing-hero-section > .container {
+  position: relative;
+  z-index: 2;
+}
+.landing-btn-hover, .landing-btn-hover:focus {
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.landing-btn-hover:hover {
+  background: #0056b3 !important;
+  color: #fff !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+}
+.landing-img-hover {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.landing-img-hover:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+}
+@media (max-width: 768px) {
+  .landing-hero-section {
+    min-height: 40vh;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}

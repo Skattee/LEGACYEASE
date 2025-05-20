@@ -1,0 +1,193 @@
+/* Main Content Styling */
+.main-content {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+.main-content h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Step Header Styling */
+h2 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Accordion Styling */
+.accordion-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #fff;
+}
+
+.accordion-header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+}
+
+.accordion-button {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    border: none;
+}
+
+.accordion-button:not(.collapsed) {
+    color: white;
+    background-color: #0056b3;
+    box-shadow: none;
+}
+
+.accordion-button:hover {
+    background-color: #0069d9;
+    color: white;
+}
+
+.accordion-body {
+    padding: 15px;
+    background-color: #f8f9fa;
+}
+
+/* Form Input Styling */
+.form-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.form-control {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+textarea.form-control {
+    resize: none;
+}
+
+/* Select Dropdown */
+.form-select {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.form-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Button Styling */
+button {
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.navigation-buttons .btn {
+    width: 48%;
+}
+
+/* Submit Button */
+.submit-btn {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.submit-btn .btn {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 15px;
+    }
+
+    .form-control {
+        font-size: 0.9rem;
+    }
+
+    .navigation-buttons .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .submit-btn .btn {
+        font-size: 1rem;
+    }
+}

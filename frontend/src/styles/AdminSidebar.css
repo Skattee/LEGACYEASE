@@ -1,0 +1,33 @@
+.MuiDrawer-paper {
+    background-color: #007bff !important; /* Sidebar background */
+    color: #ffffff !important;            /* Default text color */
+}
+
+.MuiListItem-root,
+.MuiListItemIcon-root,
+.MuiListItemText-root,
+.MuiTypography-root {
+    color: #ffffff !important;            /* Force white for all sidebar text and icons */
+}
+
+.MuiListItemIcon-root {
+    min-width: 40px;
+}
+
+.MuiListItem-button:hover {
+    background-color: #0056b3 !important; /* Darker blue on hover */
+}
+
+.admin-sidebar-logo {
+    width: 100px;
+    margin-bottom: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.admin-sidebar-title {
+    color: #ffffff !important;
+    text-align: center;
+    margin-bottom: 20px;
+}
