@@ -49,7 +49,9 @@ const LandingPage = () => (
               <ScrollLink className="nav-link" to="contact" smooth duration={500}>Contact</ScrollLink>
             </li>
             <li className="nav-item">
-              <Link className="btn btn-outline-light me-2 px-4 py-2 landing-btn-hover" to="/login">Login</Link>
+              <Link className="btn btn-hero-login me-2 px-4 py-2 landing-btn-hover" to="/login">
+                Login
+              </Link>
             </li>
             <li className="nav-item">
               <Link className="btn btn-success px-4 py-2 landing-btn-hover" to="/register">Register</Link>
@@ -66,8 +68,8 @@ const LandingPage = () => (
         <h1 className="display-3 fw-bold mb-3">YOUR WISHES MADE SIMPLE</h1>
         <p className="lead mb-4 fs-4">Giving life to your legacy with care, trust, and quality work.</p>
         <div className="d-flex justify-content-center gap-3">
-          <Link to="/register" className="btn btn-lg btn-light fw-bold px-5 landing-btn-hover">Get Started</Link>
-          <Link to="/login" className="btn btn-lg btn-outline-light fw-bold px-5 landing-btn-hover">Login</Link>
+          <Link to="/register" className="btn btn-lg btn-success fw-bold px-5 landing-btn-hover">Get Started</Link>
+          <Link to="/login" className="btn btn-lg btn-hero-login px-5 landing-btn-hover">Login</Link>
         </div>
       </div>
     </header>
