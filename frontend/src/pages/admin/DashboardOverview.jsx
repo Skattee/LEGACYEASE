@@ -19,23 +19,26 @@ const DashboardOverview = () => {
                 const token = localStorage.getItem('token');
 
                 // Fetch wills stats
-                const willsResponse = await fetch('http://localhost:5000/api/admin/wills/stats', {
-                    headers: { Authorization: `Bearer ${token}` },
-                });
+                const willsResponse = await fetch(
+                    `${process.env.REACT_APP_API_URL}/api/admin/wills/stats`,
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
                 if (!willsResponse.ok) throw new Error(`Failed to fetch wills stats: ${willsResponse.status}`);
                 const willsData = await willsResponse.json();
 
                 // Fetch pending accounts stats
-                const accountsResponse = await fetch('http://localhost:5000/api/admin/accounts/stats', {
-                    headers: { Authorization: `Bearer ${token}` },
-                });
+                const accountsResponse = await fetch(
+                    `${process.env.REACT_APP_API_URL}/api/admin/accounts/stats`,
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
                 if (!accountsResponse.ok) throw new Error(`Failed to fetch accounts stats: ${accountsResponse.status}`);
                 const accountsData = await accountsResponse.json();
 
                 // Fetch admin profile for welcome message
-                const profileResponse = await fetch('http://localhost:5000/api/admin/profile', {
-                    headers: { Authorization: `Bearer ${token}` },
-                });
+                const profileResponse = await fetch(
+                    `${process.env.REACT_APP_API_URL}/api/admin/profile`,
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
                 let profileData = {};
                 if (profileResponse.ok) {
                     profileData = await profileResponse.json();

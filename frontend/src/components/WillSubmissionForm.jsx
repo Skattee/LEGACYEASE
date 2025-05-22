@@ -13,7 +13,10 @@ const WillSubmissionForm = () => {
         setSuccess('');
 
         try {
-            const response = await axios.post('/api/wills', { title, content });
+            const response = await axios.post(
+                `${process.env.REACT_APP_API_URL}/api/wills`,
+                { title, content }
+            );
             setSuccess('Will submitted successfully!');
             setTitle('');
             setContent('');

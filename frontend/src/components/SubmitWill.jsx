@@ -73,14 +73,17 @@ const SubmitWill = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://127.0.0.1:5000/api/wills', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${localStorage.getItem('token')}`, // Include the token
-                },
-                body: JSON.stringify(formData),
-            });
+            const response = await fetch(
+                `${process.env.REACT_APP_API_URL}/api/wills`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    },
+                    body: JSON.stringify(formData),
+                }
+            );
 
             if (!response.ok) {
                 const errorData = await response.json();

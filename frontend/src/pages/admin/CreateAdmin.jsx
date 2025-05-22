@@ -14,14 +14,17 @@ const CreateAdmin = () => {
         setSuccess('');
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/admin/create-admin', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify({ name, email, password }),
-            });
+            const response = await fetch(
+                `${process.env.REACT_APP_API_URL}/api/admin/create-admin`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({ name, email, password }),
+                }
+            );
 
             if (!response.ok) {
                 throw new Error(`Failed to create admin: ${response.status}`);

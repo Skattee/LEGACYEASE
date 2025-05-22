@@ -14,7 +14,7 @@ const ManageUsers = () => {
         const fetchUsers = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await fetch('http://localhost:5000/api/users', {
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -38,7 +38,7 @@ const ManageUsers = () => {
     const approveUser = async (userId) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/admin/${userId}/approve`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/admin/${userId}/approve`, {
                 method: 'PUT',
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -59,7 +59,7 @@ const ManageUsers = () => {
     const deleteUser = async (id) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/users/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/${id}`, {
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${token}`,

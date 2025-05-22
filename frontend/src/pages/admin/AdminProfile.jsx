@@ -10,11 +10,14 @@ const AdminProfile = () => {
             try {
                 const token = localStorage.getItem('token');
                 if (!token) throw new Error('No token found');
-                const response = await fetch('http://localhost:5000/api/admin/profile', {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
+                const response = await fetch(
+                    `${process.env.REACT_APP_API_URL}/api/admin/profile`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
                 if (!response.ok) throw new Error('Failed to fetch profile');
                 const data = await response.json();
                 setEmail(data.email || '');

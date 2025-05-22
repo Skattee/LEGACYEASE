@@ -11,7 +11,7 @@ const ViewSubmissions = () => {
         const fetchWills = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await fetch('http://localhost:5000/api/wills', {
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/wills`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -35,7 +35,7 @@ const ViewSubmissions = () => {
         try {
             const token = localStorage.getItem('token');
             const response = await fetch(
-                `http://localhost:5000/api/wills/${willId}/download`,
+                `${process.env.REACT_APP_API_URL}/api/wills/${willId}/download`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -62,7 +62,7 @@ const ViewSubmissions = () => {
     const approveWill = async (id) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/wills/${id}/approve`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/wills/${id}/approve`, {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -80,7 +80,7 @@ const ViewSubmissions = () => {
     const declineWill = async (id) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/wills/${id}/decline`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/wills/${id}/decline`, {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${token}`,
